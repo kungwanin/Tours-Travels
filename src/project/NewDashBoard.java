@@ -26,45 +26,42 @@ public class NewDashBoard extends javax.swing.JFrame {
      */
     public NewDashBoard(String u) {
         this();
-        //try
-        try{
-        if (SystemTray.isSupported()) {
-            TrayIconDemo td = new TrayIconDemo();
-            td.displayTray();
-            System.out.println("hey");
-        } else {
-            System.err.println("System tray not supported!");
-        }
-        }
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }
-        
+        TabbedPaneUtility.TabPane = cTbp;
         user = u;
-      //  Vpanel.userName.setHorizontalAlignment(SwingConstants.CENTER);
-    //    Vpanel.userName.setText(u);
-    }
-
-    public NewDashBoard() {
-        initComponents();
-       TabbedPaneUtility.TabPane=cTbp;
-        
         this.setSize(framewidth, frameheight);
         jPanel1.setLocation(260, 0);
-     
-      
 
         this.getContentPane().setLayout(null);
 
         ar = new Classdoc.Dim().addCustomer();
-           VerticalPanel vp = new VerticalPanel(cTbp,MainPanel,user,ar);
-             vp.setSize(260, frameheight);
+
+        VerticalPanel vp = new VerticalPanel(cTbp, MainPanel, user, ar);
+        vp.setSize(260, frameheight);
         vp.setLocation(0, 0);
         this.add(vp);
 
         cTbp.setSize(framewidth, frameheight);
         cTbp.setLocation(240, 0);
+        //try
+        try {
+            if (SystemTray.isSupported()) {
+                TrayIconDemo td = new TrayIconDemo();
+                td.displayTray();
+                System.out.println("hey");
+            } else {
+                System.err.println("System tray not supported!");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        user = u;
+        //  Vpanel.userName.setHorizontalAlignment(SwingConstants.CENTER);
+        //    Vpanel.userName.setText(u);
+    }
+
+    public NewDashBoard() {
+        initComponents();
     }
 
     /**
@@ -158,7 +155,7 @@ public class NewDashBoard extends javax.swing.JFrame {
                 new NewDashBoard().setVisible(true);
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -166,125 +163,6 @@ public class NewDashBoard extends javax.swing.JFrame {
     public static javax.swing.JTabbedPane cTbp;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-    public static void newCustomer() {
-        // cTbp.addta
-       /* cTbp.addTab("xyz", new NewCustomer());
-        int i = cTbp.getTabCount();
-        cTbp.setSelectedIndex(i - 1);
-        cTbp.setTabComponentAt(i - 1, new Classdoc.PutIconImage().getLabel("Customer", "/images/boss.png"));
-        */
-       
-    }
-//    
-//    public static void newPayment() {
-//        // cTbp.addta
-//        cTbp.addTab("Pay", new payment(user));
-//        int i = cTbp.getTabCount();
-//        cTbp.setSelectedIndex(i - 1);
-//        cTbp.setTabComponentAt(i - 1, new Classdoc.PutIconImage().getLabel(" Payment ", "/images/boss.png"));
-//    }
-    /*
-    public static void newAccount() {
-        
-        cTbp.addTab("Account", new Account());
-        int i = cTbp.getTabCount();
-        cTbp.setSelectedIndex(i - 1);
-        cTbp.setTabComponentAt(i - 1, new Classdoc.PutIconImage().getLabel(" Account ", "/images/boss.png"));
-    }*/
-//    
-//        public static void newFeedback() {
-//        // cTbp.addta
-//        cTbp.addTab("Feedback", new Feedback());
-//        int i = cTbp.getTabCount();
-//        cTbp.setSelectedIndex(i - 1);
-//        cTbp.setTabComponentAt(i - 1, new Classdoc.PutIconImage().getLabel(" Feedback ", "/images/boss.png"));
-//    }
-//
-//        public static void newPay(String t) {
-//        // cTbp.addta
-//        String h=t;
-//        cTbp.addTab("Pay", new Pay(h,user));
-//        int i = cTbp.getTabCount();
-//        cTbp.setSelectedIndex(i - 1);
-//        cTbp.setTabComponentAt(i - 1, new Classdoc.PutIconImage().getLabel(" Pay ", "/images/boss.png"));
-//    }
-//    public static void newRailway() {
-//         cTbp.addTab("Railway", new Railway(ar, user));
-//        int i = cTbp.getTabCount();
-//        cTbp.setSelectedIndex(i - 1);
-//        cTbp.setTabComponentAt(i - 1, new Classdoc.PutIconImage().getLabel("Railway", "/images/train.png"));
-//
-//    }
-//
-//    public static void newVehicle() {
-//        cTbp.addTab("Vehicle", new Vehicle(ar, user));
-//        int i = cTbp.getTabCount();
-//        cTbp.setSelectedIndex(i - 1);
-//        cTbp.setTabComponentAt(i - 1, new Classdoc.PutIconImage().getLabel(" Vehicle ", "/images/school-bus.png"));
-//
-//    }
-//
-//    public static void newStats() {
-//        cTbp.addTab("stats", new StatsPanel(user));
-//        int i = cTbp.getTabCount();
-//        cTbp.setSelectedIndex(i - 1);
-//        cTbp.setTabComponentAt(i - 1, new Classdoc.PutIconImage().getLabel("Statistics ", "/images/graph.png"));
-//
-//    }
-//
-//    public static void newAirTicket() {
-//        cTbp.addTab("airticket", new airticket(user));
-//        int i = cTbp.getTabCount();
-//        cTbp.setSelectedIndex(i - 1);
-//        cTbp.setTabComponentAt(i - 1, new Classdoc.PutIconImage().getLabel(" Flight ", "/images/airplane.png"));
-//    }
-//
-//    public static void newHotelBooking() {
-//        cTbp.addTab("hotelbooking", new hotelbooking(user));
-//        int i = cTbp.getTabCount();
-//        cTbp.setSelectedIndex(i - 1);
-//        cTbp.setTabComponentAt(i - 1, new Classdoc.PutIconImage().getLabel(" hotel ", "/images/hotel.png"));
-//
-//    }
-//
-//    public static void newSearch() {
-//        cTbp.addTab("Search", new SearchNew(ar));
-//        int i = cTbp.getTabCount();
-//        cTbp.setSelectedIndex(i - 1);
-//        cTbp.setTabComponentAt(i - 1, new Classdoc.PutIconImage().getLabel("Search", "/images/se.png"));
-//
-//    }
-//    public static void newLeadSearch() {
-//        cTbp.addTab("Lead Search", new LeadSearch());
-//        int i = cTbp.getTabCount();
-//        cTbp.setSelectedIndex(i - 1);
-//        cTbp.setTabComponentAt(i - 1, new Classdoc.PutIconImage().getLabel("LeadSearch", "/images/se.png"));
-//
-//    }
-//
-//    public static void newCustLead() {
-//        cTbp.addTab("custlead", new CustLead(user));
-//        int i = cTbp.getTabCount();
-//        cTbp.setSelectedIndex(i - 1);
-//        cTbp.setTabComponentAt(i - 1, new Classdoc.PutIconImage().getLabel(" Lead ", "/images/lead.png"));
-//
-//    }
-//
-//    public static void newSettings() {
-//        cTbp.addTab("Settings", new setting());
-//        int i = cTbp.getTabCount();
-//        cTbp.setSelectedIndex(i - 1);
-//        cTbp.setTabComponentAt(i - 1, new Classdoc.PutIconImage().getLabel(" Setting ", "/images/setting.png"));
-//
-//    }
-//
-//    public static void newMail() {
-//        cTbp.addTab("Mail", new Mail());
-//        int i = cTbp.getTabCount();
-//        cTbp.setSelectedIndex(i - 1);
-//        cTbp.setTabComponentAt(i - 1, new Classdoc.PutIconImage().getLabel(" Mail ", "/images/email1.png"));
-//
-//    }
 
     public static void lead(String st, int lead, String user, String name) {
         cTbp.addTab("lead", new Lead(st, lead, user, name));
@@ -294,11 +172,5 @@ public class NewDashBoard extends javax.swing.JFrame {
 
     }
 
-    public static void removeTab(JPanel p) {
-        cTbp.remove(cTbp.indexOfComponent(p));
-        int i = cTbp.getTabCount();
-        cTbp.setSelectedIndex(i - 1);
-    }
-    
 
 }

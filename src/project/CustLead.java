@@ -6,6 +6,7 @@
 package project;
 
 import Classdoc.DBConnection;
+import java.awt.Dimension;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -23,7 +24,7 @@ public class CustLead extends javax.swing.JPanel {
     /**
      * Creates new form CustLead
      */
-    public CustLead(String user)
+    public CustLead(String user,Dimension dim)
     {
         this();
         txtUser.setText(user);
@@ -633,7 +634,6 @@ String date,mobile,email,name,city,address,service="",from,to,priority,passonto,
             System.out.println("custlead sql exception"+e.getMessage());
         }
         NewDashBoard.lead(service,lead,user,name);
-        NewDashBoard.removeTab(this);
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void jLabel57MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel57MouseClicked
@@ -691,7 +691,6 @@ String date,mobile,email,name,city,address,service="",from,to,priority,passonto,
     private void jLabel60MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel60MouseClicked
         // TODO add your handling code here:
         jPanel3MouseClicked(null);
-        NewDashBoard.removeTab(jPanel1);
     }//GEN-LAST:event_jLabel60MouseClicked
 
 

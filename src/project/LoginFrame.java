@@ -367,7 +367,6 @@ public class LoginFrame extends javax.swing.JFrame {
         toFront();
         if(!chAgree.isSelected())
             return;
-        System.out.println("hey");
         name=txtName.getText().trim();
         pwd=String.valueOf(txtPwd.getPassword());
         email=txtEmail.getText().trim();
@@ -547,6 +546,7 @@ public class LoginFrame extends javax.swing.JFrame {
             ResultSet rs=DBConnection.executeQuery(sql);
             if(rs.next())
             {
+                System.out.println("name="+name);
                 new NewDashBoard(name).setVisible(true);
                 this.dispose();
             }
@@ -587,6 +587,7 @@ public class LoginFrame extends javax.swing.JFrame {
             {
                 lblInvalid.setText("");
                 lblsignin.setText("");
+                System.out.println("name="+name);
                 new NewDashBoard(name).setVisible(true);
                 this.dispose();
                  

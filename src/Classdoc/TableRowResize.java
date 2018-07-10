@@ -7,6 +7,7 @@ package Classdoc;
 
 import javax.swing.table.TableCellRenderer;
 import java.awt.Component;
+import java.awt.Font;
 import javax.swing.JTable;
 /**
  *
@@ -29,6 +30,7 @@ public class TableRowResize {
           tab.getColumnModel().getColumn(column).setPreferredWidth(width);
       
       }
+        tab.getTableHeader().setFont( new Font( "Arial" , Font.BOLD, 15 ));
     }
     
 }

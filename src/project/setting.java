@@ -416,7 +416,6 @@ try
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        NewDashBoard.removeTab(this);
     }//GEN-LAST:event_jButton5ActionPerformed
 
 

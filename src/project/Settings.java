@@ -127,7 +127,6 @@ public class Settings extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSignup10MouseClicked
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
-        NewDashBoard.removeTab(this);
     }//GEN-LAST:event_jPanel3MouseClicked
 
     private void btnSignup11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignup11MouseClicked

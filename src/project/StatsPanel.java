@@ -182,7 +182,6 @@ String user, sql;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         NewDashBoard.removeTab(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

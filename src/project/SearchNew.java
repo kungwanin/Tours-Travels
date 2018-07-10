@@ -59,7 +59,6 @@ public class SearchNew extends javax.swing.JPanel {
         cmbFirst = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         txtTab = new javax.swing.JLabel();
-        cmbSecond = new javax.swing.JComboBox<>();
         lblError = new javax.swing.JLabel();
         namePanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -74,6 +73,7 @@ public class SearchNew extends javax.swing.JPanel {
         btnSignup10 = new javax.swing.JLabel();
         cbSecond = new javax.swing.JTextField();
         Title = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -133,8 +133,9 @@ public class SearchNew extends javax.swing.JPanel {
 
         btn.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 150, 40));
 
-        jPanel1.add(btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 130, 40));
+        jPanel1.add(btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 130, 40));
 
+        tab.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tab.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tabKeyPressed(evt);
@@ -142,7 +143,7 @@ public class SearchNew extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tab);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 1040, 300));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 1220, 400));
 
         cmbFirst.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "railway_details", "vehicle_details", "airline", "hotel" }));
         cmbFirst.addItemListener(new java.awt.event.ItemListener() {
@@ -162,19 +163,6 @@ public class SearchNew extends javax.swing.JPanel {
 
         txtTab.setForeground(new java.awt.Color(255, 51, 51));
         jPanel1.add(txtTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(635, 349, 112, 21));
-
-        cmbSecond.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Invoice_No", "Dated" }));
-        cmbSecond.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbSecondItemStateChanged(evt);
-            }
-        });
-        cmbSecond.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cmbSecondMouseClicked(evt);
-            }
-        });
-        jPanel1.add(cmbSecond, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 130, 110, 20));
 
         lblError.setForeground(new java.awt.Color(255, 51, 0));
         jPanel1.add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 210, 20));
@@ -277,7 +265,7 @@ public class SearchNew extends javax.swing.JPanel {
                 .addComponent(btnSignup10, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 120, 40));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 180, 120, 40));
         jPanel1.add(cbSecond, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 130, 110, -1));
 
         Title.setBackground(new java.awt.Color(54, 33, 89));
@@ -289,6 +277,9 @@ public class SearchNew extends javax.swing.JPanel {
         Title.setOpaque(true);
         jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 1070, 90));
 
+        jLabel6.setText("Invoice No.");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, 111, -1));
+
         jScrollPane1.setViewportView(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -296,9 +287,8 @@ public class SearchNew extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1062, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,14 +319,9 @@ int check1 = 0, check2 = 0;
         // TODO add your handling code here:
         table = cmbFirst.getSelectedItem().toString();
         checkTab(table);
-        if (cmbSecond.getSelectedItem().equals("Invoice_No")) {
             invoiceno = cbSecond.getText();
             check2 = 0;
-        } else {
-            check2 = 1;
-            date = cbSecond.getText();
 
-        }
         if (check1 == 0) {
             cid = cbCid.getSelectedItem().toString();
             System.out.println(cid);
@@ -403,14 +388,6 @@ int check1 = 0, check2 = 0;
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbFirstMouseClicked
 
-    private void cmbSecondMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbSecondMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbSecondMouseClicked
-
-    private void cmbSecondItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSecondItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbSecondItemStateChanged
-
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
         idPanel.setVisible(false);
@@ -453,7 +430,6 @@ int check1 = 0, check2 = 0;
     private javax.swing.JComboBox<String> cbName;
     private javax.swing.JTextField cbSecond;
     private javax.swing.JComboBox<String> cmbFirst;
-    private javax.swing.JComboBox<String> cmbSecond;
     private javax.swing.JPanel idPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -462,6 +438,7 @@ int check1 = 0, check2 = 0;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;

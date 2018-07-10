@@ -24,7 +24,9 @@ JPanel OptionPane=null;
     public VerticalPanel(JTabbedPane basePanel,JPanel optionPane,String u,List<String> ar) {
         initComponents();
         this.BasePanel=basePanel;
+        System.out.print("user="+user);
         user=u;
+        txtUser.setText(user);
         arr=ar;
     }
 
@@ -55,6 +57,7 @@ JPanel OptionPane=null;
         jLabel26 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        txtUser = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(54, 33, 89));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -332,6 +335,9 @@ JPanel OptionPane=null;
         });
         add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, 40, 40));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 670, 260, 20));
+
+        txtUser.setForeground(new java.awt.Color(255, 255, 255));
+        add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 90, 20));
     }// </editor-fold>//GEN-END:initComponents
 String user;
 List<String> arr;
@@ -482,6 +488,7 @@ TabbedPaneUtility.addTab("Statistics", new StatsPanel(user,BasePanel.getSize()),
     private void p9OptionsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p9OptionsMouseClicked
         // TODO add your handling code here:
            //     NewDashBoard.newCustLead();
+TabbedPaneUtility.addTab("Lead", new CustLead(user,BasePanel.getSize()),"/images/diagram.png");
 
     }//GEN-LAST:event_p9OptionsMouseClicked
 
@@ -576,6 +583,7 @@ TabbedPaneUtility.addTab("Setting", new setting(BasePanel.getSize()),"/images/se
     private javax.swing.JLabel p7;
     private javax.swing.JLabel p8;
     private javax.swing.JLabel p9;
+    private javax.swing.JLabel txtUser;
     // End of variables declaration//GEN-END:variables
 public void setColor(java.awt.event.MouseEvent evt) {
         evt.getComponent().setBackground(new java.awt.Color(85, 65, 118));

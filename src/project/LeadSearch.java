@@ -200,7 +200,6 @@ String date;
 
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
         // TODO add your handling code here:
-        NewDashBoard.removeTab(this);
     }//GEN-LAST:event_jPanel6MouseClicked
 
 
