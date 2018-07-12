@@ -23,12 +23,12 @@ public class Pay extends javax.swing.JPanel {
          jLabel21.setVisible(false);
         try
         {
-        Class.forName("java.sql.Driver");
-        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-        st=con.createStatement();
+//        Class.forName("java.sql.Driver");
+//        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//        st=con.createStatement();
         String b,c,d,e;
         b="Select * from customer_details";
-        rs=st.executeQuery(b);
+        rs=DBConnection.executeQuery(sql);
         while(rs.next())
          {
         c=rs.getString("cname");
@@ -382,11 +382,12 @@ String b,e,f,d;
           e=(String) ccb.getSelectedItem(); 
         try
         {
-        Class.forName("java.sql.Driver");
-        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-        st=con.createStatement();
+            
+//        Class.forName("java.sql.Driver");
+//        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//        st=con.createStatement();
        b="Select cid,mobile_no from customer_details where cname ='"+e+"'";
-        rs=st.executeQuery(b);
+        rs=DBConnection.executeQuery(sql);
             System.out.println(""+b);
          while(rs.next())
          {
@@ -457,12 +458,20 @@ txtinvoiceno.setText("");
         }
         try
         {
-            Class.forName("java.sql.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-      st=con.createStatement();
+//            Class.forName("java.sql.Driver");
+//      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//      st=con.createStatement();
     sql="Update payment set paymenttype='"+type+"',paymentdate='"+paydate+"',referenceno='"+ref+"',amountpaid='"+amtpay+"',actualamount='"+actualamt+"',balance='"+bal+"',customeraccno='"+cac+"',user='"+user+"' where invoiceno='"+invoice+"';";        
             System.out.println(""+sql);       
-st.executeUpdate(sql);
+
+            int result=DBConnection.executeUpdate(sql);
+            if (result > 0) {
+                DBConnection.commit();
+                         JOptionPane.showMessageDialog(null, "Record Saved Successfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "Sorry Fail to Save Record");
+            }
+           // st.executeUpdate(sql);
         }
         catch(Exception ex)
         {

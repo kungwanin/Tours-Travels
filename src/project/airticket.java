@@ -605,12 +605,19 @@ try
     double comm,amt;
     amt=Double.parseDouble(txtgrosstotal.getText());
     comm=Double.parseDouble(txtc.getText());
- Class.forName("java.sql.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-      st=con.createStatement();     
+// Class.forName("java.sql.Driver");
+//      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//      st=con.createStatement();     
       sql="Insert into payment(invoiceno,invoicedate,cid,customername,actualamount,balance,user,discount,tax,commission) values('"+txtinvoiceno.getText()+"','"+txtinvoicedate.getDateStringOrSuppliedString("yyyy-mm-dd")+"','"+txtcid.getText()+"','"+ccb.getSelectedItem()+"','"+txttotalamount.getText()+"','"+txttotalamount.getText()+"','"+txtuser.getText()+"','"+txtdiscount.getText()+"','"+txttax.getText()+"','"+comm+"');";
+int result=DBConnection.executeUpdate(sql);
+if (result > 0) {
+                DBConnection.commit();
+                         JOptionPane.showMessageDialog(null, "Record Saved Successfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "Sorry Fail to Save Record");
+            }
       System.out.println(""+sql);
- st.executeUpdate(sql);
+ //st.executeUpdate(sql);
 }
 catch(Exception ex)
 {
@@ -622,16 +629,23 @@ public void airline()
 {
 try
 {
-    Class.forName("java.sql.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-      st=con.createStatement();
+//    Class.forName("java.sql.Driver");
+//      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//      st=con.createStatement();
       DefaultTableModel t=(DefaultTableModel)jTable1.getModel();  
       int row=jTable1.getRowCount();
       for(int i=0;i<row;i++)
       {
   sql="Insert into airline values('"+txtinvoiceno.getText()+"','"+txtinvoicedate.getDateStringOrSuppliedString("yyyy-mm-dd")+"','"+txtcid.getText()+"','"+t.getValueAt(i,0)+"','"+t.getValueAt(i,1)+"','"+t.getValueAt(i,2)+"','"+t.getValueAt(i,3)+"','"+t.getValueAt(i,4)+"','"+t.getValueAt(i,5)+"','"+t.getValueAt(i,6)+"','"+t.getValueAt(i,7)+"','"+t.getValueAt(i,8)+"','"+t.getValueAt(i,9)+"','"+t.getValueAt(i,10)+"','"+t.getValueAt(i,11)+"','"+" "+"','"+" "+"');";
- System.out.println(""+sql);
- st.executeUpdate(sql);
+ int result=DBConnection.executeUpdate(sql);
+ if (result > 0) {
+                DBConnection.commit();
+                         JOptionPane.showMessageDialog(null, "Record Saved Successfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "Sorry Fail to Save Record");
+            }
+  System.out.println(""+sql);
+ //st.executeUpdate(sql);
       }
 }
 catch(Exception ex)

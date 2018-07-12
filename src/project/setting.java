@@ -5,6 +5,7 @@
  */
 package project;
 
+import Classdoc.DBConnection;
 import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -286,12 +287,20 @@ Connection con =null;
 pas=new String(newpass.getPassword()); 
         try
         {
-        Class.forName("java.sql.Driver");
-        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-        st=con.createStatement();
+//        Class.forName("java.sql.Driver");
+//        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//        st=con.createStatement();
         String b,c,d,e;
         sql="Update  users set password='"+pas+"' where user ='"+ txtuser.getText()+"'";
-        st.executeUpdate(sql);
+        int result=DBConnection.executeUpdate(sql);
+        if (result > 0) {
+                DBConnection.commit();
+                       //  JOptionPane.showMessageDialog(null, "Record Saved Successfully");
+            } else {
+               // JOptionPane.showMessageDialog(null, "Sorry Fail to Save Record");
+            }
+      
+        
             System.out.println(""+sql);
             con.close();
         }
@@ -307,14 +316,21 @@ pas=new String(newpass.getPassword());
         pas=new String(txtpass1.getPassword()); 
         try
         {
-        Class.forName("java.sql.Driver");
-        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-        st=con.createStatement();
+//        Class.forName("java.sql.Driver");
+//        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//        st=con.createStatement();
         String b,c,d,e;
         sql="Insert into  users values('"+txtuser1.getText()+"','"+pas+"','"+txtemail.getText()+"')";
-        st.executeUpdate(sql);
+       int result=DBConnection.executeUpdate(sql);
+       if (result > 0) {
+                DBConnection.commit();
+                       //  JOptionPane.showMessageDialog(null, "Record Saved Successfully");
+            } else {
+              //  JOptionPane.showMessageDialog(null, "Sorry Fail to Save Record");
+            }
+      //  st.executeUpdate(sql);
             System.out.println(""+sql);
-            con.close();
+         //   con.close();
         }
          catch(Exception ex)
         {
@@ -336,12 +352,14 @@ pas=new String(newpass.getPassword());
     private void cbcidItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbcidItemStateChanged
         try
         {
-        Class.forName("java.sql.Driver");
-        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-        st=con.createStatement();
+            
+            
+//        Class.forName("java.sql.Driver");
+//        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//        st=con.createStatement();
         String b;
         sql="Select * from customer_details where cid='"+cbcid.getSelectedItem()+"'";
-        rs=st.executeQuery(sql);
+        rs=DBConnection.executeQuery(sql);
         while(rs.next())
          {
         b=rs.getString("cname");
@@ -357,7 +375,7 @@ pas=new String(newpass.getPassword());
         b=rs.getString("email");
         txtemail.setText(b);
        }
-con.close();
+//con.close();
         }
         catch(Exception ex)
         {
@@ -369,12 +387,20 @@ con.close();
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 try
         {
-        Class.forName("java.sql.Driver");
-        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-        st=con.createStatement();
+//            
+//        Class.forName("java.sql.Driver");
+//        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//        st=con.createStatement();
         String b;
         sql="Update customer_details set cname='"+txtname.getText()+"',mobile_no='"+txtmobile.getText()+"',address='"+txtaddress.getText()+"',city='"+txtcity.getText()+"',email='"+txtcustomeremail.getText()+"',state='"+txtstate.getText()+"'  where cid='"+cbcid.getSelectedItem()+"'";
-        st.executeUpdate(sql);
+        int result=DBConnection.executeUpdate(sql);
+if (result > 0) {
+                DBConnection.commit();
+                       //  JOptionPane.showMessageDialog(null, "Record Saved Successfully");
+            } else {
+               // JOptionPane.showMessageDialog(null, "Sorry Fail to Save Record");
+            }       
+// st.executeUpdate(sql);
             System.out.println(""+sql);
         con.close();
         }
@@ -393,6 +419,8 @@ try
         con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
         st=con.createStatement();
         sql="Delete from  users where user ='"+txtuserremove.getText()+"' ";
+        
+        
         st.executeUpdate(sql);
             System.out.println(""+sql);
             con.close();

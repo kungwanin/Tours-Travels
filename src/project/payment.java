@@ -230,11 +230,12 @@ DefaultTableModel t1=(DefaultTableModel)jTable1.getModel();
  double f,g,h,i,j;
 try
 {
-    Class.forName("java.sql.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-      st=con.createStatement(); 
+    
+//    Class.forName("java.sql.Driver");
+//      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//      st=con.createStatement(); 
       sql="Select * from payment where cid ='"+txtcid.getText()+"';";
- ResultSet rs1=st.executeQuery(sql);
+ ResultSet rs1=DBConnection.executeQuery(sql);
       System.out.println(""+sql);
 while(rs1.next())
 {
