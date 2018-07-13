@@ -467,9 +467,9 @@ txtinvoiceno.setText("");
             int result=DBConnection.executeUpdate(sql);
             if (result > 0) {
                 DBConnection.commit();
-                         JOptionPane.showMessageDialog(null, "Record Saved Successfully");
+       //                  JOptionPane.showMessageDialog(null, "Record Saved Successfully");
             } else {
-                JOptionPane.showMessageDialog(null, "Sorry Fail to Save Record");
+         //       JOptionPane.showMessageDialog(null, "Sorry Fail to Save Record");
             }
            // st.executeUpdate(sql);
         }
