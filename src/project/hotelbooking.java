@@ -1,5 +1,6 @@
 
 package project;
+import Classdoc.DBConnection;
 import Classdoc.Dim;
 import java.awt.Dimension;
 import javax.swing.DefaultCellEditor;
@@ -27,12 +28,13 @@ public class hotelbooking extends javax.swing.JPanel {
         cbm.addItem(" ");
         try
         {
-        Class.forName("java.sql.Driver");
-        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-        st=con.createStatement();
+//        Class.forName("java.sql.Driver");
+//        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//        st=con.createStatement();
         String b,c,d,e;
         b="Select * from customer_details";
-        rs=st.executeQuery(b);
+        rs=DBConnection.executeQuery(b);
+        
         while(rs.next())
          {
         c=rs.getString("cname");
@@ -397,11 +399,11 @@ String b,e,f;
         e=(String) ccb.getSelectedItem(); 
         try
         {
-        Class.forName("java.sql.Driver");
-        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-        st=con.createStatement();
+//        Class.forName("java.sql.Driver");
+//        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//        st=con.createStatement();
        b="Select mobile_no from customer_details where cname ='"+e+"'";
-        rs=st.executeQuery(b);
+        rs=DBConnection.executeQuery(b);
          while(rs.next())
          {
          f=rs.getString("mobile_no");
@@ -425,11 +427,11 @@ String b,e,f;
         e=(String) cbm.getSelectedItem(); 
         try
         {
-        Class.forName("java.sql.Driver");
-        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-        st=con.createStatement();
+//        Class.forName("java.sql.Driver");
+//        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//        st=con.createStatement();
        b="Select cid from customer_details where mobile_no ='"+e+"'";
-        rs=st.executeQuery(b);
+        rs=DBConnection.executeQuery(b);
          while(rs.next())
          {
          c=rs.getInt("cid");
@@ -620,8 +622,15 @@ Class.forName("java.sql.Driver");
       for(int i=0;i<row;i++)
       {
  sql="Insert into hotel values('"+txtcid.getText()+"','"+txtinvoiceno.getText()+"','"+txtinvoicedate.getDateStringOrSuppliedString("yyyy-mm-dd")+"','"+t.getValueAt(i,0)+"','"+t.getValueAt(i,1)+"','"+t.getValueAt(i,2)+"','"+t.getValueAt(i,3)+"','"+t.getValueAt(i,4)+"','"+t.getValueAt(i,5)+"','"+t.getValueAt(i,6)+"','"+t.getValueAt(i,7)+"','"+t.getValueAt(i,8)+"','"+t.getValueAt(i,9)+"','"+t.getValueAt(i,10)+"');";
-      System.out.println(""+sql);
- st.executeUpdate(sql);
+ int result=DBConnection.executeUpdate(sql);
+ if (result > 0) {
+                DBConnection.commit();
+                        // JOptionPane.showMessageDialog(null, "Record Saved Successfully");
+            } else {
+                //JOptionPane.showMessageDialog(null, "Sorry Fail to Save Record");
+            }
+ System.out.println(""+sql);
+ //st.executeUpdate(sql);
       }
     }
 catch(Exception ex)
@@ -638,12 +647,19 @@ try
     double comm,amt;
     amt=Double.parseDouble(totalamount.getText());
     comm=Double.parseDouble(txtc.getText());
- Class.forName("java.sql.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-      st=con.createStatement();     
+// Class.forName("java.sql.Driver");
+//      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//      st=con.createStatement();     
       sql="Insert into payment(invoiceno,invoicedate,cid,customername,actualamount,balance,user,discount,tax,commission) values('"+txtinvoiceno.getText()+"','"+txtinvoicedate.getDateStringOrSuppliedString("yyyy-mm-dd") + "','"+txtcid.getText()+"','"+ccb.getSelectedItem()+"','"+txtpay.getText()+"','"+txtpay.getText()+"','"+txtuser.getText()+"','"+txtdisc.getText()+"','"+txttax.getText()+"','"+comm+"');";
-      System.out.println(""+sql);
- st.executeUpdate(sql);
+    int result=DBConnection.executeUpdate(sql);
+if (result > 0) {
+                DBConnection.commit();
+                       //  JOptionPane.showMessageDialog(null, "Record Saved Successfully");
+            } else {
+               // JOptionPane.showMessageDialog(null, "Sorry Fail to Save Record");
+            }  
+    System.out.println(""+sql);
+// st.executeUpdate(sql);
 
 }
 catch(Exception ex)

@@ -347,12 +347,13 @@ String sql;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try
         {
-            Class.forName("java.sql.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-            st=con.createStatement();
+            
+//            Class.forName("java.sql.Driver");
+//            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//            st=con.createStatement();
             sql="Select * from payment where invoicedate between ' "+t1.getDateStringOrSuppliedString("yyyy-mm-dd")+" 'and' "+t2.getDateStringOrSuppliedString("yyyy-mm-dd")+ " ' ";  //t1 and t2 are dates
             System.out.println(""+sql);
-            rs=st.executeQuery(sql);
+            rs=DBConnection.executeQuery(sql);
             double a,b,c,d,e,sumofpay=0.0,sumofamt=0.0,sumofbalance=0.0,sumofcom=0.0,sumoftax=0.0;
 
             while(rs.next())
@@ -416,11 +417,11 @@ String sql;
         try
         {
             double sumofpay=0.0,sumofamt=0.0,sumofbalance=0.0,sumofcom=0.0,sumoftax=0.0;
-            Class.forName("java.sql.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
-            st=con.createStatement();
+//            Class.forName("java.sql.Driver");
+//            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/accountsoft", "root", "1234");
+//            st=con.createStatement();
             sql="Select * from payment where cid ='"+txtcid.getText()+"';";
-            ResultSet rs1=st.executeQuery(sql);
+            ResultSet rs1=DBConnection.executeQuery(sql);
             System.out.println(""+sql);
             while(rs1.next())
             {
